@@ -3,10 +3,15 @@
 import { isDev } from "../composables";
 import { GamePlay } from "../composables/logic";
 
-const play = new GamePlay(12, 12);
-console.log(1);
+const play = new GamePlay(12, 12,50);
+useStorage('vuesweeper-state',play.state)
+watchEffect(()=>{
+  play.checkGameState()
+})
 const state =computed(()=>play.board)
-
+const minescount = computed(()=>{
+  return play.board.flat().reduce((a=0,b)=>a+(b.mine?1:0),0)
+})
 </script>
 
 <template>
@@ -29,6 +34,7 @@ const state =computed(()=>play.board)
           @contextmenu.prevent="play.onClickRight(block)"
         ></MineBlock>
       </div>
+      <div>count:{{minescount}}</div>
       <div flex="~" justify-center>
         <button btn @click="isDev = ~isDev">
           {{ isDev ? 'DEV' : 'NORMAL' }}
