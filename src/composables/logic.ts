@@ -37,13 +37,16 @@ export class GamePlay {
     return this.state.value.mineGenerated
   }
 
-  reset() {
+  reset( width= this.width,  height= this.height, mines=this.mines) {
     //   this.state.value = Array.apply(this.state.value, new Array(this.height).map((_, y):BlockState[] => {
     //     return Array.apply(null, new Array(this.width)).map((_, x): BlockState => {
     //       return { x, y, adjacentMines: 0, revealed: false };
     //     });
     //   })
     // );
+    this.width = width
+    this.height = height
+    this.mines = mines
     this.state.value = {
       board: Array.from({ length: this.height }, (_, y) =>
         Array.from({ length: this.width },
@@ -168,9 +171,9 @@ export class GamePlay {
     const blocks = this.state.value.board.flat();
     if (blocks.every((block) => block.revealed || block.flagged)) {
       if (blocks.some((block) => block.flagged && !block.mine)) {
-        alert("You cheat");
+        // alert("You cheat");
       } else {
-        alert("You win!");
+        // alert("You win!");
         this.state.value.gameState = "won"
       }
     }

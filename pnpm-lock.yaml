@@ -3,11 +3,14 @@ lockfileVersion: 5.3
 specifiers:
   '@antfu/eslint-config': ^0.18.8
   '@iconify-json/carbon': ^1.1.1
+  '@iconify-json/mdi': ^1.1.2
+  '@iconify/json': ^2.1.16
   '@types/node': ^17.0.21
   '@unocss/reset': ^0.27.6
   '@vitejs/plugin-vue': ^2.2.4
   '@vue/test-utils': ^2.0.0-rc.18
   '@vueuse/core': ^8.0.0
+  canvas-confetti: ^1.5.1
   eslint: ^8.10.0
   jsdom: ^19.0.0
   pnpm: ^6.32.3
@@ -23,7 +26,10 @@ specifiers:
   vue-tsc: ^0.32.1
 
 dependencies:
+  '@iconify-json/mdi': 1.1.3
+  '@iconify/json': 2.1.18
   '@vueuse/core': 8.0.0_vue@3.2.31
+  canvas-confetti: 1.5.1
   vue: 3.2.31
   vue-router: 4.0.14_vue@3.2.31
 
@@ -249,9 +255,21 @@ packages:
       '@iconify/types': 1.0.12
     dev: true
 
+  /@iconify-json/mdi/1.1.3:
+    resolution: {integrity: sha512-ABXndnAViaqEcK31lrXeTZp/arE+s8l9J2fCVIrzMrEkD5eYlm33g3sUzvyETCS4skZ5f7B/MiDXJseTJ9hLkA==}
+    dependencies:
+      '@iconify/types': 1.0.12
+    dev: false
+
+  /@iconify/json/2.1.18:
+    resolution: {integrity: sha512-TJaIa5Sm5C6f7Vi4WmLL0dgXQljNn5i78btOny5Z1Ye5Nk986oOq0VXiVdDPGexERLyYvYdNaY8KiFx7kG99Ng==}
+    dependencies:
+      '@iconify/types': 1.0.12
+      pathe: 0.0.2
+    dev: false
+
   /@iconify/types/1.0.12:
     resolution: {integrity: sha512-6er6wSGF3hgc1JEZqiGpg21CTCjHBYOUwqLmb2Idzkjiw6ogalGP0ZMLVutCzah+0WB4yP+Zd2oVPN8jvJ+Ftg==}
-    dev: true
 
   /@iconify/utils/1.0.23:
     resolution: {integrity: sha512-Ktdmpe4mkMXQAnnDUz3s6s5aY/BeVPwHC1d5IhG1bgrWVNWFQNUj8cQPMbHpNCSD9MRC5yGxm9/PGPpOWGJLAg==}
@@ -1036,6 +1054,10 @@ packages:
   /callsites/3.1.0:
     resolution: {integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==}
     engines: {node: '>=6'}
+    dev: true
+
+  /canvas-confetti/1.5.1:
+    resolution: {integrity: sha512-Ncz+oZJP6OvY7ti4E1slxVlyAV/3g7H7oQtcCDXgwGgARxPnwYY9PW5Oe+I8uvspYNtuHviAdgA0LfcKFWJfpg==}
     dev: true
 
   /chai/4.3.6:
@@ -3098,6 +3120,10 @@ packages:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
     dev: true
+
+  /pathe/0.0.2:
+    resolution: {integrity: sha512-mmK20YtPb4yXHlaPuOD/uPIpRu7iIK45GA/GiRSlNpIdfWDG5aEQmFT1HHtBmJB+t/6DvFOtOsEipsPA8Bx2cw==}
+    dev: false
 
   /pathe/0.2.0:
     resolution: {integrity: sha512-sTitTPYnn23esFR3RlqYBWn4c45WGeLcsKzQiUpXJAyfcWkolvlYpV8FLo7JishK946oQwMFUCHXQ9AjGPKExw==}
