@@ -1,6 +1,7 @@
 import { BlockState } from "~/types";
-import { Ref } from 'vue'
-import { start } from "repl";
+import { Ref } from 'vue';
+
+
 const directions = [
   [-1, -1],
   [-1, 0],
@@ -11,12 +12,13 @@ const directions = [
   [1, -1],
   [1, 0],
 ];
-
+type gameStatus = 'play' | 'won' | 'lost'
 interface GameState {
   board: BlockState[][]
   mineGenerated: boolean
-  gameState: 'play' | 'won' | 'lost'
+  gameState: gameStatus
   startMS: number
+  endMS?:number
 }
 
 export class GamePlay {
@@ -61,7 +63,7 @@ export class GamePlay {
       gameState: 'play',
       startMS: +Date.now(),
     }
-    console.log(this.state.value.board)
+
   }
 
   random(min: number, max: number) {
@@ -113,12 +115,10 @@ export class GamePlay {
   }
 
 
-  // let dev = false;
+
   isMine(block:BlockState){
     if (block.mine) {
-      alert("BOOOOM!!!");
-      this.showAllMine()
-      this.state.value.gameState = 'lost'
+      this.gameOver('lost')
       return
     }
 
@@ -157,14 +157,14 @@ export class GamePlay {
   }
 
   showAllMine() {
-    this.state.value.board.flat().forEach(block => {
+    this.state.value.board.flat().forEach((block:BlockState) => {
       if (block.mine) block.revealed = true
     })
   }
 
   updateNumbers() {
-    this.state.value.board.forEach((raw) => {
-      raw.forEach((block) => {
+    this.state.value.board.forEach((raw:BlockState[]) => {
+      raw.forEach((block:BlockState) => {
         if (block.mine) return;
         this.getSiblings(block).forEach((b) => {
           if (b.mine) block.adjacentMines += 1;
@@ -192,13 +192,26 @@ export class GamePlay {
     // if(!mineGenerated) return;.
 
     const blocks = this.state.value.board.flat();
-    if (blocks.every((block) => block.revealed || block.flagged)) {
-      if (blocks.some((block) => block.flagged && !block.mine)) {
-        // alert("You cheat");
+    if (blocks.every((block:BlockState) => block.revealed || block.flagged)) {
+      if (blocks.some((block:BlockState) => block.flagged && !block.mine)) {
+        alert('Double check!!not Win!!')
       } else {
         // alert("You win!");
-        this.state.value.gameState = "won"
+        this.gameOver("won")
       }
     }
+  }
+  
+  gameOver(status:gameStatus){
+    this.state.value.gameState = status
+    this.state.value.endMS = +Date.now()
+
+    if(status==='lost'){
+      setTimeout(()=>{
+        alert("BOOOOM!!!YOU LOST!!!");
+      },0)
+      this.showAllMine()
+    }
+
   }
 }

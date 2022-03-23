@@ -2,9 +2,10 @@
 // import { BlockState } from "~/types";
 import { isDev } from "../composables";
 import { GamePlay } from "../composables/logic";
+
 const nowTime = $(useNow());
 const timerMS = $computed(() =>
-  Math.round((+nowTime - play.state.value.startMS) / 1000)
+  Math.round(((play.state.value.endMS??+nowTime) - (play.state.value.startMS ?? +nowTime)) / 1000)
 );
 const minmeRest = $computed(() => {
   if (!play.state.value.mineGenerated) return play.mines;
@@ -24,7 +25,7 @@ const minescount = computed(() => {
 function newGame(difficulty: "easy" | "medium" | "hard") {
   switch (difficulty) {
     case "easy":
-      return play.reset(9, 9, 10);
+      return play.reset(9, 9, 1);
     case "medium":
       return play.reset(16, 16, 40);
     case "hard":
@@ -67,7 +68,6 @@ function newGame(difficulty: "easy" | "medium" | "hard") {
           @contextmenu.prevent="play.onClickRight(block)"
         ></MineBlock>
       </div>
-      
       
       <Confetti :passed="play.state.value.gameState === 'won'" />
     </div>

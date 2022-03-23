@@ -1,15 +1,9 @@
-<template>
-    <div/>
-</template>
-  
-<script setup lang='ts'>
-  import confetti from "canvas-confetti"
-
-  const props = defineProps<{
-    passed:boolean
-  }>()
-
-  function congrats() {
+<script setup lang="ts">
+import confetti from 'canvas-confetti'
+const props = defineProps<{
+  passed: boolean
+}>()
+function congrats() {
   const defaults = {
     colors: [
       '#5D8C7B',
@@ -51,11 +45,13 @@ watch(
   (v) => {
     if (v)
       setTimeout(congrats, 300)
+      setTimeout(congrats, 1300)
+      setTimeout(congrats, 2300)
   },
   { flush: 'post' },
 )
 </script>
-  
-<style>
-  
-</style>
+
+<template>
+  <div />
+</template>

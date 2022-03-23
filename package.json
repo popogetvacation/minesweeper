@@ -13,6 +13,7 @@
     "@iconify-json/mdi": "^1.1.2",
     "@iconify/json": "^2.1.16",
     "@vueuse/core": "^8.0.0",
+    "ant-design-vue": "^2.2.8",
     "canvas-confetti": "^1.5.1",
     "vue": "^3.2.31",
     "vue-router": "^4.0.14"
