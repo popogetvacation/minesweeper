@@ -1,4 +1,18 @@
 <p align='center'>
+  <img src='./public/boom.png'  width='600'/>
+</p>
+
+<h6 align='center'>
+<a href="http://120.79.209.247:7777/">Minesweeper Live Demo</a>
+</h6>
+
+<h5 align='center'>
+<b>Minesweeper Game by vue3.0-typescript-vite</b>
+</h5>
+
+<br>
+
+<p align='center'>
   <img src='https://user-images.githubusercontent.com/11247099/111864893-a457fd00-899e-11eb-9f05-f4b88987541d.png' alt='Vitesse - Opinionated Vite Starter Template' width='600'/>
 </p>
 
